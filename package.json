@@ -1,0 +1,28 @@
+{
+  "name": "adv_api",
+  "version": "0.0.1",
+  "description": "ADV System API RESTFUL WEBSERVICE",
+  "main": "servidor.js",
+  "scripts": {
+    "start":"node servidor.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "RESTFUL",
+    "ETIM",
+    "INFO",
+    "ETEC",
+    "JGA",
+    "TCC"
+  ],
+  "author": "Guilherme Cesar",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "joi": "^10.6.0",
+    "jsonwebtoken": "^7.4.3",
+    "mysql": "^2.14.1"
+  }
+}
