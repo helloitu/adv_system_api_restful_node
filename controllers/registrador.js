@@ -2,22 +2,25 @@ var connection = require('./../config');
 const Joi = require('joi');
 
 
-module.exports.registro_advogado=function(req,res){
-    var novo_advogado={
-          "adv_login":req.body.adv_login,
-          "adv_senha":req.body.adv_senha,
-          "adv_nome":req.body.adv_nome,
-          "adv_end":req.body.adv_end,
-          "adv_tel":req.body.adv_tel,
-          "adv_cpf":req.body.adv_cpf,
-          "adv_rg":req.body.adv_rg,
-          "adv_reg_oab":req.body.adv_reg_oab,
-          "adv_data_admissao":req.body.adv_data_admissao,
-          "adv_status":req.body.adv_status,
-          "adv_casos":req.body.adv_casos,
-          "adv_cel":req.body.adv_cel
+//registro de caso
+module.exports.registro_caso=function(req,res){
+    var novo_caso={
+        "cas_nat_causa": req.body.cas_nat_causa,
+        "cas_vara": req.body.cas_vara,
+        "cas_cartorio": req.body.cas_cartorio,
+        "cas_pasta_numero": req.body.cas_pasta_numero,
+        "cli_cod": req.body.cli_cod,
+        "cas_pos_proces": req.body.cas_pos_proces,
+        "cas_part_contratante": req.body.cas_part_contratante,
+        "cas_end": req.body.cas_end,
+        "adv_cod": req.body.adv_cod,
+        "cas_data": req.body.cas_data,
+        "cas_andamento": req.body.cas_andamento,
+        "cas_tipo_pag": req.body.cas_tipo_pag,
+        "cas_valor": req.body.cas_valor,
+        "cas_historico": req.body.cas_historico  
     }
-    connection.query('INSERT INTO tbl_advogado SET ?',novo_advogado, function (error, results, fields) {
+    connection.query('INSERT INTO tbl_caso SET ?',novo_caso, function (error, results, fields) {
       if (error) {
           console.log("[-] ",error);
         res.json({
@@ -25,16 +28,78 @@ module.exports.registro_advogado=function(req,res){
             message:'Algum erro ocorreu na requisição'
         })
       }else{
-          console.log("[i] Novo registro na tabela Advogado foi inserido");
+          console.log("[i] Novo registro na tabela Casos foi inserido");
           res.json({
             status:true,
-            message:'Novo Advogado inserido com sucesso!'
+            message:'Novo Caso inserido com sucesso!'
         })
       }
     });
 
 }
 
+// route pra cadastro de clientes
+module.exports.registro_cliente=function(req,res){
+    var novo_cliente={
+        "cli_nome": req.body.cli_nome,
+        "cli_end": req.body.cli_end,
+        "cli_rg": req.body.cli_rg,
+        "cli_cpf": req.body.cli_cpf,
+        "cli_cel": req.body.cli_cel,
+        "cli_tel": req.body.cli_tel,
+        "cli_data_nasc": req.body.cli_data_nasc,
+        "cli_email": req.body.cli.cli_email
+
+    }
+    connection.query('INSERT INTO tbl_cliente SET ?',novo_cliente, function (error, results, fields) {
+      if (error) {
+          console.log("[-] ",error);
+        res.json({
+            status:false,
+            message:'Algum erro ocorreu na requisição'
+        })
+      }else{
+          console.log("[i] Novo registro na tabela Clientes foi inserido");
+          res.json({
+            status:true,
+            message:'Novo Cliente inserido com sucesso!'
+        })
+      }
+    });
+
+}
+
+//registro de secretaria
+module.exports.registro_secretaria=function(req,res){
+    var evento_agenda={
+          "sec_nome":req.body.sec_nome,
+          "sec_end": req.body.sec_end,
+          "sec_cpf": req.body.sec_cpf,
+          "sec_rg": req.body.sec_rg,
+          "sec_tel": req.body.sec_tel,
+          "sec_cel": req.body.sec_cel,
+          "sec_login": req.body.sec_login,
+          "sec_senha": req.body.sec_senha
+    }
+
+    connection.query('INSERT INTO tbl_secretaria SET ?',secretaria_funcionario, function (error, results, fields) {
+      if (error) {
+        res.json({
+            status:false,
+            message:'Algum erro ocorreu na requisição'
+        })
+      }else{
+          console.log("[i] Novo registro na tabela Secretaria foi inserido");
+          res.json({
+            status:true,
+            message:'Funcionario da Secretaria foi Cadastrado com sucesso!'
+        })
+      }
+    });
+
+}
+
+//registro de eventos na agenda
 module.exports.registro_agenda=function(req,res){
     var evento_agenda={
           "age_data":req.body.age_data,
@@ -62,27 +127,3 @@ module.exports.registro_agenda=function(req,res){
 
 }
 
-module.exports.registro=function(req,res){
-    var cad
-    var users={
-        "name":req.body.name,
-        "email":req.body.email,
-        "password":req.body.password,
-        "created_at":today,
-        "updated_at":today
-    }
-    connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
-      if (error) {
-        res.json({
-            status:false,
-            message:'there are some error with query'
-        })
-      }else{
-          res.json({
-            status:true,
-            data:results,
-            message:'user registered sucessfully'
-        })
-      }
-    });
-}
