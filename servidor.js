@@ -11,6 +11,9 @@ adv_api.use(bodyParser.json());
 adv_api.post('/api/registro/caso',ControllerRegistro.registro_caso);
 adv_api.post('/api/registro/agenda',ControllerRegistro.registro_agenda);
 adv_api.post('/api/registro/adv',ControllerRegistro.registro_advogado);
+adv_api.post('/api/registro/cliente',ControllerRegistro.registro_cliente);
+adv_api.post('/api/registro/secretaria',ControllerRegistro.registro_secretaria);
+adv_api.post('/api/registro/usuario',ControllerRegistro.registro_usuario);
 
 //caminho de login
 adv_api.post('/api/login',ControllerAutenticador.autentica);
