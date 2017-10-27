@@ -1,6 +1,14 @@
 var connection = require('./../config');
 const Joi = require('joi');
 
+var d = new Date();
+var hora = d.getHours();
+var minuto = d.getMinutes();
+var segundo = d.getSeconds();
+var dia = d.getDate();
+var mes = d.getMonth();
+var ano = d.getFullYear();
+var data = hora+":"+minuto+":"+segundo+"|"+dia+"/"+(mes+1)+"/"+ano;
 
 //registro cliente
 module.exports.registro_cliente=function(req,res){
@@ -93,7 +101,7 @@ module.exports.registro_usuario=function(req,res){
         "usu_nome":req.body.usu_nome,
         "usu_funcao":req.body.usu_funcao,
         "usu_login":req.body.usu_login,
-        "usu_senha":req.body.senha
+        "usu_senha":req.body.usu_senha
     }
     if(novo_usuario){
     connection.query('INSERT INTO tbl_usuario SET ?',novo_usuario, function(error,results,fields){
@@ -226,7 +234,7 @@ module.exports.registro_advogado=function(req,res){
      "adv_email":req.body.adv_email,
      "adv_endereco":req.body.adv_endereco,
      "adv_numero":req.body.adv_numero,
-     "adv_telefone":req.body.adv_telegone,
+     "adv_telefone":req.body.adv_telefone,
      "adv_celular":req.body.adv_celular,
      "adv_especialidade":req.body.adv_especialidade,
      "adv_registro":req.body.adv_registro,
