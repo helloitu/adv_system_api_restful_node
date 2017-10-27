@@ -2,5 +2,5 @@ Iniciando Servidor ADV SYSTEM API....
  --------------------
  Developed By Guilherme 
 [+]-----------------------------------------------------------[+]
-[ 9:31:32|7/9/2017 ][+] Banco de dados Conectado 
+[ 22:4:20|26/10/2017 ][+] Banco de dados Conectado 
  Sistema Iniciado

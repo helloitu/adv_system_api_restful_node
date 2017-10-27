@@ -2,128 +2,261 @@ var connection = require('./../config');
 const Joi = require('joi');
 
 
-//registro de caso
-module.exports.registro_caso=function(req,res){
-    var novo_caso={
-        "cas_nat_causa": req.body.cas_nat_causa,
-        "cas_vara": req.body.cas_vara,
-        "cas_cartorio": req.body.cas_cartorio,
-        "cas_pasta_numero": req.body.cas_pasta_numero,
-        "cli_cod": req.body.cli_cod,
-        "cas_pos_proces": req.body.cas_pos_proces,
-        "cas_part_contratante": req.body.cas_part_contratante,
-        "cas_end": req.body.cas_end,
-        "adv_cod": req.body.adv_cod,
-        "cas_data": req.body.cas_data,
-        "cas_andamento": req.body.cas_andamento,
-        "cas_tipo_pag": req.body.cas_tipo_pag,
-        "cas_valor": req.body.cas_valor,
-        "cas_historico": req.body.cas_historico  
-    }
-    connection.query('INSERT INTO tbl_caso SET ?',novo_caso, function (error, results, fields) {
-      if (error) {
-          console.log("[-] ",error);
-        res.json({
-            status:false,
-            message:'Algum erro ocorreu na requisição'
-        })
-      }else{
-          console.log("[i] Novo registro na tabela Casos foi inserido");
-          res.json({
-            status:true,
-            message:'Novo Caso inserido com sucesso!'
-        })
-      }
-    });
-
-}
-
-// route pra cadastro de clientes
+//registro cliente
 module.exports.registro_cliente=function(req,res){
     var novo_cliente={
-        "cli_nome": req.body.cli_nome,
-        "cli_end": req.body.cli_end,
-        "cli_rg": req.body.cli_rg,
-        "cli_cpf": req.body.cli_cpf,
-        "cli_cel": req.body.cli_cel,
-        "cli_tel": req.body.cli_tel,
-        "cli_data_nasc": req.body.cli_data_nasc,
-        "cli_email": req.body.cli.cli_email
-
+        "cli_nome":req.body.cli_nome,
+        "cli_sexo":req.body.cli_sexo,
+        "cli_email":req.body.cli_email,
+        "cli_rg":req.body.cli_rg,
+        "cli_cpf":req.body.cli_cpf,
+        "cli_data_nascimento":req.body.cli_data_nascimento,
+        "cli_cidade":req.body.cli_cidade,
+        "cli_endereco":req.body.cli_endereco,
+        "cli_numero":req.body.cli_numero,
+        "cli_telefone":req.body.cli_telefone,
+        "cli_celular":req.body.cli_celular
     }
-    connection.query('INSERT INTO tbl_cliente SET ?',novo_cliente, function (error, results, fields) {
-      if (error) {
-          console.log("[-] ",error);
-        res.json({
-            status:false,
-            message:'Algum erro ocorreu na requisição'
-        })
-      }else{
-          console.log("[i] Novo registro na tabela Clientes foi inserido");
-          res.json({
-            status:true,
-            message:'Novo Cliente inserido com sucesso!'
-        })
-      }
+   if(novo_cliente){
+    connection.query('INSERT INTO tbl_cliente SET ?',novo_cliente, function(error,results,fields){
+        if(error){
+            console.log("[",data,"] [-]",error);
+            res.json({
+                status:false,
+                message:'Ocorreu algum erro na requisição de cadastro'
+            })
+          }else{
+              console.log("[",data,"] [i] Novo registro na tabela cliente foi inserido");
+              res.json({
+                status:true,
+                message:'Novo cliente inserido com sucesso!'
+            })
+  
+          }
+  
     });
+}else if(!novo_cliente){
+   console.log("[",data,"] Requisição feita sem nenhum parametro");
+   res.json({
+       status:false,
+       message:'Nenhum parametro informado!'
+   })
 
-}
+       }
+  }
 
-//registro de secretaria
+
+
+//registro secretaria
 module.exports.registro_secretaria=function(req,res){
-    var evento_agenda={
-          "sec_nome":req.body.sec_nome,
-          "sec_end": req.body.sec_end,
-          "sec_cpf": req.body.sec_cpf,
-          "sec_rg": req.body.sec_rg,
-          "sec_tel": req.body.sec_tel,
-          "sec_cel": req.body.sec_cel,
-          "sec_login": req.body.sec_login,
-          "sec_senha": req.body.sec_senha
+    var novo_secretaria={
+        "sec_nome":req.body.sec_nome,
+        "sec_rg":req.body.sec_rg,
+        "sec_cpf":req.body.sec_cpf,
+        "sec_sexo":req.body.sec_sexo,
+        "sec_endereco":req.body.sec_endereco,
+        "sec_telefone":req.body.sec_telefone,
+        "sec_celular":req.body.sec_celular
     }
-
-    connection.query('INSERT INTO tbl_secretaria SET ?',secretaria_funcionario, function (error, results, fields) {
-      if (error) {
-        res.json({
-            status:false,
-            message:'Algum erro ocorreu na requisição'
-        })
-      }else{
-          console.log("[i] Novo registro na tabela Secretaria foi inserido");
-          res.json({
-            status:true,
-            message:'Funcionario da Secretaria foi Cadastrado com sucesso!'
-        })
-      }
+    if(novo_secretaria){
+    connection.query('INSERT INTO tbl_secretaria SET ?',novo_secretaria, function(error,results,fields){
+        if(error){
+            console.log("[",data,"] [-]",error);
+            res.json({
+                status:false,
+                message:'Ocorreu algum erro na requisição de cadastro'
+            })
+          }else{
+              console.log("[",data,"] [i] Novo registro na tabela secretaria foi inserido");
+              res.json({
+                status:true,
+                message:'Novo registro na secretaria inserido com sucesso!'
+            })
+  
+          }
+  
     });
+}else if(!novo_secretaria){
+    console.log("[",data,"] Requisição feita sem nenhum parametro");
+    res.json({
+        status:false,
+        message:'Nenhum parametro informado!'
+    })
+ 
+        }
+  }
 
-}
 
-//registro de eventos na agenda
+//registro usuario
+module.exports.registro_usuario=function(req,res){
+    var novo_usuario={
+        "usu_nome":req.body.usu_nome,
+        "usu_funcao":req.body.usu_funcao,
+        "usu_login":req.body.usu_login,
+        "usu_senha":req.body.senha
+    }
+    if(novo_usuario){
+    connection.query('INSERT INTO tbl_usuario SET ?',novo_usuario, function(error,results,fields){
+        if(error){
+            console.log("[",data,"] [-]",error);
+            res.json({
+                status:false,
+                message:'Ocorreu algum erro na requisição de cadastro'
+            })
+          }else{
+              console.log("[",data,"] [i] Novo registro na tabela usuario foi inserido");
+              res.json({
+                status:true,
+                message:'Novo usuario inserido com sucesso!'
+            })
+  
+          }
+  
+    });
+}else if(!novo_usuario){
+    console.log("[",data,"] Requisição feita sem nenhum parametro");
+    res.json({
+        status:false,
+        message:'Nenhum parametro informado!'
+    })
+ 
+        }
+  }
+
+
+
+
+//registro caso
+module.exports.registro_caso=function(req,res){
+    var novo_caso={
+        "caso_causa":req.body.caso_causa,
+        "caso_vara":req.body.caso_vara,
+        "caso_cartorio":req.body.caso_cartorio,
+        "caso_pasta":req.body.caso_pasta,
+        "caso_tipo":req.body.caso_tipo,
+        "caso_valor":req.body.caso_valor,
+        "caso_pagamento":req.body.caso_pagamento,
+        "caso_cliente":req.body.caso_cliente,
+        "caso_posicao":req.body.caso_posicao,
+        "caso_advogado":req.body.caso_advogado,
+        "caso_parte_nome":req.body.caso_parte_nome,
+        "caso_parte_endereco":req.body.caso_parte_endereco,
+        "caso_parte_numero":req.body.caso_parte_numero,
+        "caso_parte_telefone":req.body.caso_parte_telefone,
+        "caso_parte_celular":req.body.caso_parte_celular,
+        "caso_data":req.body.caso_data,
+        "caso_andamento":req.body.caso_andamento,
+        "caso_data_andamento":req.body.caso_data_andamento
+    }
+    if(novo_caso){
+    connection.query('INSERT INTO tbl_caso SET ?',novo_caso, function(error,results,fields){
+        if(error){
+            console.log("[",data,"] [-]",error);
+            res.json({
+                status:false,
+                message:'Ocorreu algum erro na requisição de cadastro'
+            })
+          }else{
+              console.log("[",data,"] [i] Novo registro na tabela Caso foi inserido");
+              res.json({
+                status:true,
+                message:'Novo caso inserido com sucesso!'
+            })
+  
+          }
+  
+    });
+}else if(!novo_caso){
+    console.log("[",data,"] Requisição feita sem nenhum parametro");
+    res.json({
+        status:false,
+        message:'Nenhum parametro informado!'
+    })
+ 
+        }
+  }
+
+//registro de agenda
 module.exports.registro_agenda=function(req,res){
-    var evento_agenda={
-          "age_data":req.body.age_data,
-          "age_hora":req.body.age_hora,
-          "age_nome":req.body.age_nome,
-          "age_situacao":req.body.age_situacao,
-          "age_assunto":req.body.age_assunto,
-          "age_tel":req.body.age_tel
+    var novo_agenda={
+        "age_nome":req.body.age_nome,
+        "age_data":req.body.age_data,
+        "age_horario":req.body.age_horario,
+        "age_situacao":req.body.age_situacao,
+        "age_assunto":req.body.age_assunto,
+        "age_telefone":req.body.age_telefone,
+        "age_celular":req.body.age_celular
     }
-
-    connection.query('INSERT INTO tbl_agenda SET ?',evento_agenda, function (error, results, fields) {
-      if (error) {
-        res.json({
-            status:false,
-            message:'Algum erro ocorreu na requisição'
-        })
-      }else{
-          console.log("[i] Novo registro na tabela Agenda foi inserido");
-          res.json({
-            status:true,
-            message:'Evento na Agenda foi Cadastrado com sucesso!'
-        })
-      }
+    if(novo_agenda){
+    connection.query('INSERT INTO tbl_agenda SET ?',novo_agenda, function(error,results,fields){
+        if(error){
+            console.log("[",data,"] [-]",error);
+            res.json({
+                status:false,
+                message:'Ocorreu algum erro na requisição de cadastro'
+            })
+          }else{
+              console.log("[",data,"] [i] Novo registro na tabela Agenda foi inserido");
+              res.json({
+                status:true,
+                message:'Novo evento na agenda inserido com sucesso!'
+            })
+          }
+  
     });
+}else if(!novo_agenda){
+    console.log("[",data,"] Requisição feita sem nenhum parametro");
+    res.json({
+        status:false,
+        message:'Nenhum parametro informado!'
+    })
+ 
+        }
+  }
 
+
+
+//registro de advogado
+module.exports.registro_advogado=function(req,res){
+  var novo_advogado={
+     "adv_nome":req.body.adv_nome,
+     "adv_rg":req.body.adv_rg,
+     "adv_cpf":req.body.adv_cpf,
+     "adv_sexo":req.body.adv_sexo,
+     "adv_email":req.body.adv_email,
+     "adv_endereco":req.body.adv_endereco,
+     "adv_numero":req.body.adv_numero,
+     "adv_telefone":req.body.adv_telegone,
+     "adv_celular":req.body.adv_celular,
+     "adv_especialidade":req.body.adv_especialidade,
+     "adv_registro":req.body.adv_registro,
+     "adv_data_emissao":req.body.adv_data_emissao,
+     "adv_status":req.body.adv_status
+  }
+  if(novo_advogado){
+  connection.query('INSERT INTO tbl_advogado SET ?',novo_advogado, function(error,results,fields){
+      if(error){
+          console.log("[",data,"] [-]",error);
+          res.json({
+              status:false,
+              message:'Ocorreu algum erro na requisição de cadastro'
+          })
+        }else{
+            console.log("[",data,"] [i] Novo registro na tabela Advogados foi inserido");
+            res.json({
+              status:true,
+              message:'Novo Advogado inserido com sucesso!'
+          })
+
+        }
+
+  });
+}else if(!novo_advogado){
+    console.log("[",data,"] Requisição feita sem nenhum parametro");
+    res.json({
+        status:false,
+        message:'Nenhum parametro informado!'
+    })
+ 
+        }
 }
-
