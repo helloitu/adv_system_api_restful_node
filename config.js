@@ -10,8 +10,8 @@ var data = hora+":"+minuto+":"+segundo+"|"+dia+"/"+(mes+1)+"/"+ano;
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'yolo123',
-  database : 'bd_adv'
+  password : '',
+  database : 'adv_sys'
 });
 connection.connect(function(err){
 if(err) {

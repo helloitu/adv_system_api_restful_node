@@ -18,7 +18,4 @@ adv_api.post('/api/registro/usuario',ControllerRegistro.registro_usuario);
 //caminho de login
 adv_api.post('/api/login',ControllerAutenticador.autentica);
 
-//caminhos de consulta
-adv_api.post('/api/consulta/adv',ControllerConsulta.consulta_advogado);
-adv_api.post('/api/consulta/caso',ControllerConsulta.consulta_caso);
 adv_api.listen(8000);

@@ -2,5 +2,17 @@ Iniciando Servidor ADV SYSTEM API....
  --------------------
  Developed By Guilherme 
 [+]-----------------------------------------------------------[+]
-[ 22:4:20|26/10/2017 ][+] Banco de dados Conectado 
+[ 22:53:52|26/10/2017 ][+] Banco de dados Conectado 
  Sistema Iniciado
+[i] Nova requisição de login por: denis
+[i] Requisição de login para  denis  retornou codigo 200, sucesso ao logar!
+[ 22:53:52|26/10/2017 ] [i] Novo registro na tabela Advogados foi inserido
+[i] Nova requisição de login por: denis
+[i] Requisição de login para  denis  retornou codigo 200, sucesso ao logar!
+[ 22:53:52|26/10/2017 ] [i] Novo registro na tabela Advogados foi inserido
+[i] Nova requisição de login por: denis
+[i] Requisição de login para  denis  retornou codigo 200, sucesso ao logar!
+[ 22:53:52|26/10/2017 ] [i] Novo registro na tabela usuario foi inserido
+[ 22:53:52|26/10/2017 ] [i] Novo registro na tabela Advogados foi inserido
+[i] Nova requisição de login por: denis
+[i] Requisição de login para  denis  retornou codigo 200, sucesso ao logar!
