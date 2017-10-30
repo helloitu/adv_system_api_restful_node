@@ -20,6 +20,9 @@ module.exports.registro_cliente=function(req,res){
         "cli_cpf":req.body.cli_cpf,
         "cli_data_nascimento":req.body.cli_data_nascimento,
         "cli_cidade":req.body.cli_cidade,
+        "cli_bairro":req.body.cli_bairro,
+        "cli_cep":req.body.cli_cep,
+        "cli_estado":req.body.cli_estado,
         "cli_endereco":req.body.cli_endereco,
         "cli_numero":req.body.cli_numero,
         "cli_telefone":req.body.cli_telefone,
@@ -31,13 +34,13 @@ module.exports.registro_cliente=function(req,res){
             console.log("[",data,"] [-]",error);
             res.json({
                 status:false,
-                message:'Ocorreu algum erro na requisição de cadastro'
+                message:'Ocorreu algum erro na requisição de cadastro, verifique os campos inseridos\n Talvez esse cliente ja pode ter sido inserido......'
             })
           }else{
               console.log("[",data,"] [i] Novo registro na tabela cliente foi inserido");
               res.json({
                 status:true,
-                message:'Novo cliente inserido com sucesso!'
+                message:'Novo cliente cadastrado com sucesso!'
             })
   
           }
@@ -63,6 +66,10 @@ module.exports.registro_secretaria=function(req,res){
         "sec_cpf":req.body.sec_cpf,
         "sec_sexo":req.body.sec_sexo,
         "sec_endereco":req.body.sec_endereco,
+        "sec_cep":req.body.sec_cep,
+        "sec_bairro":req.body.sec_bairro,
+        "sec_cidade":req.body.sec_cidade,
+        "sec_estado":req.body.sec_estado,
         "sec_telefone":req.body.sec_telefone,
         "sec_celular":req.body.sec_celular
     }
@@ -97,30 +104,33 @@ module.exports.registro_secretaria=function(req,res){
 
 //registro usuario
 module.exports.registro_usuario=function(req,res){
+    var login_usu = req.body.login_usu;
     var novo_usuario={
         "usu_nome":req.body.usu_nome,
         "usu_funcao":req.body.usu_funcao,
         "usu_login":req.body.usu_login,
         "usu_senha":req.body.usu_senha
     }
+
     if(novo_usuario){
-    connection.query('INSERT INTO tbl_usuario SET ?',novo_usuario, function(error,results,fields){
-        if(error){
-            console.log("[",data,"] [-]",error);
-            res.json({
-                status:false,
-                message:'Ocorreu algum erro na requisição de cadastro'
-            })
-          }else{
-              console.log("[",data,"] [i] Novo registro na tabela usuario foi inserido");
-              res.json({
-                status:true,
-                message:'Novo usuario inserido com sucesso!'
-            })
-  
-          }
-  
-    });
+        connection.query('INSERT INTO tbl_usuario SET ?',novo_usuario, function(error,results,fields){
+            if(error){
+                console.log("[",data,"] [-]",error);
+                res.json({
+                    status:false,
+                    message:'Ocorreu algum erro na requisição de cadastro'
+                })
+              }else{
+                  console.log("[",data,"] [i] Novo registro na tabela usuario foi inserido");
+                  res.json({
+                    status:true,
+                    message:'Novo usuario inserido com sucesso!'
+                })
+      
+              }
+      
+        });
+
 }else if(!novo_usuario){
     console.log("[",data,"] Requisição feita sem nenhum parametro");
     res.json({
@@ -233,6 +243,10 @@ module.exports.registro_advogado=function(req,res){
      "adv_sexo":req.body.adv_sexo,
      "adv_email":req.body.adv_email,
      "adv_endereco":req.body.adv_endereco,
+     "adv_bairro":req.body.adv_bairro,
+     "adv_estado":req.body.adv_estado,
+     "adv_cep":req.body.adv_cep,
+     "adv_cidade":req.body.adv_cidade,
      "adv_numero":req.body.adv_numero,
      "adv_telefone":req.body.adv_telefone,
      "adv_celular":req.body.adv_celular,

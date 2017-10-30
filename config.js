@@ -8,14 +8,14 @@ var mes = d.getMonth();
 var ano = d.getFullYear();
 var data = hora+":"+minuto+":"+segundo+"|"+dia+"/"+(mes+1)+"/"+ano;
 var connection = mysql.createConnection({
-  host     : 'localhost',
+  host     : '127.0.0.1',
   user     : 'root',
   password : '',
   database : 'adv_sys'
 });
 connection.connect(function(err){
 if(err) {
-    console.log("[",data,"][-] Erro ao conectar com o banco de dados");
+    console.log("[",data,"][-] Erro ao conectar com o banco de dados:",err);
     
 } else {
     console.log("[",data,"][+] Banco de dados Conectado \n Sistema Iniciado");

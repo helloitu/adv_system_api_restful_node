@@ -9,8 +9,8 @@
 6 silly lifecycle adv_api@0.1.0~prestart: no script for prestart, continuing
 7 info lifecycle adv_api@0.1.0~start: adv_api@0.1.0
 8 verbose lifecycle adv_api@0.1.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle adv_api@0.1.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\Guilherme\Desktop\tccAdv\adv_system_api_restful_node-master\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Python27;C:\Python27\Lib\site-packages;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\PostgreSQL\9.5\scripts\;C:\Program Files\PostgreSQL\9.5\bin\;C:\Program Files\nodejs\;C:\Users\Guilherme\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Guilherme\AppData\Roaming\Composer\vendor\bin;C:\Users\Guilherme\AppData\Local\atom\bin;C:\Users\Guilherme\AppData\Roaming\npm;C:\Users\Guilherme\AppData\Local\now-cli;C:\Users\Guilherme\AppData\Local\Microsoft\WindowsApps;C:\Users\Guilherme\AppData\Local\Programs\Git\cmd
-10 verbose lifecycle adv_api@0.1.0~start: CWD: C:\Users\Guilherme\Desktop\tccAdv\adv_system_api_restful_node-master
+9 verbose lifecycle adv_api@0.1.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\Guilherme\Desktop\tccAdv\adv_system_api_restful_node\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Python27;C:\Python27\Lib\site-packages;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\PostgreSQL\9.5\scripts\;C:\Program Files\PostgreSQL\9.5\bin\;C:\Program Files\nodejs\;C:\Users\Guilherme\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\Guilherme\AppData\Roaming\Composer\vendor\bin;C:\Users\Guilherme\AppData\Local\atom\bin;C:\Users\Guilherme\AppData\Roaming\npm;C:\Users\Guilherme\AppData\Local\now-cli;C:\Users\Guilherme\AppData\Local\Microsoft\WindowsApps;C:\Users\Guilherme\AppData\Local\Programs\Git\cmd
+10 verbose lifecycle adv_api@0.1.0~start: CWD: C:\Users\Guilherme\Desktop\tccAdv\adv_system_api_restful_node
 11 silly lifecycle adv_api@0.1.0~start: Args: [ '/d /s /c', 'node servidor.js > registros_api.txt' ]
 12 silly lifecycle adv_api@0.1.0~start: Returned: code: 3221225786  signal: null
 13 info lifecycle adv_api@0.1.0~start: Failed to exec start script
@@ -25,7 +25,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:920:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
 15 verbose pkgid adv_api@0.1.0
-16 verbose cwd C:\Users\Guilherme\Desktop\tccAdv\adv_system_api_restful_node-master
+16 verbose cwd C:\Users\Guilherme\Desktop\tccAdv\adv_system_api_restful_node
 17 error Windows_NT 10.0.16299
 18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
 19 error node v6.11.4
